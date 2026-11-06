@@ -6,7 +6,7 @@ async function go(e:FormEvent<HTMLFormElement>){e.preventDefault();const fd=new 
 if(!v.name?.trim())x.name="Enter your full name.";if(!/^\S+@\S+\.\S+$/.test(v.email||""))x.email="Enter a valid business email.";if(!v.company?.trim())x.company="Enter your company name.";
 if(v.website&&!/^https?:\/\/.+\..+/.test(v.website))x.website="Start with http:// or https://";if(!v.details||v.details.trim().length<20)x.details="Describe your needs in at least 20 characters.";if(!v.consent)x.consent="Please accept the privacy notice.";
 setErr(x);if(Object.keys(x).length)return;setSt("sending");
-try{const r=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(v)});setSt(r.ok?"ok":"fail")}catch{setSt("fail")}}
+const ep=process.env.NEXT_PUBLIC_FORM_ENDPOINT;if(!ep){setSt("fail");return}try{const r=await fetch(ep,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(v)});setSt(r.ok?"ok":"fail")}catch{setSt("fail")}}
 if(st==="ok")return <div role="status" className="border border-signal p-8"><h2 className="text-xl font-semibold">Request sent</h2><p className="mt-2 text-mute">Thank you. We will contact you using your preferred method.</p></div>;
 const Fld=({n,l,children}:{n:string;l:string;children:React.ReactNode})=><div><label htmlFor={n} className="mb-1 block text-sm">{l}</label>{children}{err[n]&&<p role="alert" className="mt-1 text-sm text-red-400">{err[n]}</p>}</div>;
 return <form onSubmit={go} noValidate className="grid gap-5">
