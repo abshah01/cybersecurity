@@ -1,0 +1,3 @@
+import ServiceCard from "@/components/ServiceCard";import Cta from "@/components/Cta";import {services} from "@/lib/data";
+export const metadata={title:"Services",description:"Eight cybersecurity services from assessment to incident response."};
+export default function P(){return <><section className="wrap pt-16"><h1 className="display text-6xl md:text-9xl">Services</h1><p className="mt-4 max-w-xl text-mute">Choose a service to see the threats it addresses and how we work.</p><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map(s=><ServiceCard key={s.slug} s={s}/>)}</div></section><Cta/></>}

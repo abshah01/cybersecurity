@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Cta({title="Let's Make Your Digital Environment More Secure."}:{title?:string}){return <section className="wrap mt-24"><div className="border border-line bg-steel p-8 md:p-14"><h2 className="display max-w-3xl text-5xl md:text-7xl">{title}</h2><div className="mt-8 flex flex-wrap gap-3"><Link href="/contact" className="btn-p">Talk to Our Team</Link><Link href="/contact" className="btn-s">Request an Assessment</Link></div></div></section>}

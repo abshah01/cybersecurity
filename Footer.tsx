@@ -1,0 +1,7 @@
+import Link from "next/link";import {site,nav} from "@/lib/site";import {services} from "@/lib/data";
+export default function Footer(){return <footer className="mt-24 border-t border-line bg-steel"><div className="wrap grid gap-10 py-14 md:grid-cols-4">
+<div><p className="font-display text-2xl uppercase">{site.name}</p><p className="mt-3 text-sm text-mute">Cybersecurity consultancy and managed security services. [Company description placeholder]</p></div>
+<div><p className="mb-3 font-semibold">Navigate</p>{nav.map(([l,h])=><Link key={h} href={h} className="block py-1 text-sm text-mute hover:text-signal">{l}</Link>)}</div>
+<div><p className="mb-3 font-semibold">Services</p>{services.map(s=><Link key={s.slug} href={`/services/${s.slug}`} className="block py-1 text-sm text-mute hover:text-signal">{s.title}</Link>)}</div>
+<div><p className="mb-3 font-semibold">Contact</p><p className="text-sm text-mute">{site.email}<br/>{site.phone}<br/>{site.address}</p><p className="mt-3 flex gap-4 text-sm">{site.social.map(([l,h])=><a key={l} href={h} className="text-mute hover:text-signal">{l}</a>)}</p></div></div>
+<div className="wrap flex flex-wrap justify-between gap-3 border-t border-line py-5 text-xs text-mute"><span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span><span className="flex gap-4"><Link href="/privacy-policy">Privacy Policy</Link><Link href="/terms-of-service">Terms of Service</Link></span></div></footer>}

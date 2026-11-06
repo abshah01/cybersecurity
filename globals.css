@@ -1,0 +1,11 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+body{@apply bg-ink text-bone font-sans antialiased}
+:focus-visible{outline:2px solid #38E1F0;outline-offset:3px}
+.display{@apply font-display uppercase leading-[.86] tracking-tight}
+.btn{@apply inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold transition-colors}
+.btn-p{@apply btn bg-signal text-ink hover:bg-bone}
+.btn-s{@apply btn border border-line text-bone hover:border-signal hover:text-signal}
+.wrap{@apply mx-auto max-w-7xl px-5 md:px-10}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@keyframes sweep{to{stroke-dashoffset:0}}
+.draw{stroke-dasharray:600;stroke-dashoffset:600;animation:sweep 2.4s ease-out forwards}
